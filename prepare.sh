@@ -72,11 +72,11 @@ for architecture in x86_64 aarch64 s390x ppc64le loongarch64; do
     COMPOSE_BIN_URL="https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${architecture}"
     if [ "${architecture}" == "loongarch64" ]; then
         APP_BIN_URL="https://github.com/hubhike/1Panel-${architecture}/releases/download/${APP_VERSION}/1panel-${APP_VERSION}-linux-${arch}.tar.gz"
-        DOCKER_BIN_URL="https://github.com/hubhike/docker-ce-binaries-${architecture}/releases/download/v${DOCKER_VERSION}/docker-${DOCKER_VERSION}.tgz"
-        COMPOSE_BIN_URL="https://github.com/hubhike/compose-${architecture}/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${architecture}"
+        DOCKER_BIN_URL="https://github.com/wojiushixiaobai/docker-ce-binaries-${architecture}/releases/download/v${DOCKER_VERSION}/docker-${DOCKER_VERSION}.tgz"
+        COMPOSE_BIN_URL="https://github.com/wojiushixiaobai/compose-${architecture}/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${architecture}"
     fi
     if [ "${architecture}" == "s390x" ]; then
-        DOCKER_BIN_URL="https://github.com/hubhike/docker-ce-binaries-${architecture}/releases/download/v${DOCKER_VERSION}/docker-${DOCKER_VERSION}.tgz"
+        DOCKER_BIN_URL="https://github.com/wojiushixiaobai/docker-ce-binaries-${architecture}/releases/download/v${DOCKER_VERSION}/docker-${DOCKER_VERSION}.tgz"
     fi
     if [ "${architecture}" == "ppc64le" ]; then
         DOCKER_BIN_URL="https://download.docker.com/linux/static/stable/${architecture}/docker-18.06.3-ce.tgz"

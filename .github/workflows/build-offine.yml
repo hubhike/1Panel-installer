@@ -17,10 +17,10 @@ jobs:
       - name: Check Version
         id: get-version
         run: |
-          version=$(curl -s 'https://api.github.com/repos/wojiushixiaobai/1Panel-loongarch64/releases/latest' | jq -r ".tag_name")
+          version=$(curl -s 'https://api.github.com/repos/hubhike/1Panel-loongarch64/releases/latest' | jq -r ".tag_name")
           echo "version=${version}" >> $GITHUB_OUTPUT
-          docker_version=$(curl -s 'https://api.github.com/repos/wojiushixiaobai/docker-ce-binaries-loongarch64/releases/latest' | jq -r ".tag_name")
-          compose_version=$(curl -s 'https://api.github.com/repos/wojiushixiaobai/compose-loongarch64/releases/latest' | jq -r ".tag_name")
+          docker_version=$(curl -s 'https://api.github.com/repos/hubhike/docker-ce-binaries-loongarch64/releases/latest' | jq -r ".tag_name")
+          compose_version=$(curl -s 'https://api.github.com/repos/hubhike/compose-loongarch64/releases/latest' | jq -r ".tag_name")
           echo "app_version=${version}" >> $GITHUB_OUTPUT
           echo "docker_version=${docker_version/v/}" >> $GITHUB_OUTPUT
           echo "compose_version=${compose_version}" >> $GITHUB_OUTPUT
@@ -28,14 +28,14 @@ jobs:
       - name: Check Release
         id: check-release
         run: |
-          gh release view ${{ steps.get-version.outputs.version }} -R wojiushixiaobai/1Panel-installer >/dev/null 2>&1 || echo "create=1" >> $GITHUB_OUTPUT
+          gh release view ${{ steps.get-version.outputs.version }} -R hubhike/1Panel-installer >/dev/null 2>&1 || echo "create=1" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Check Buile
         id: check-build
         run: |
-          gh release view ${{ steps.get-version.outputs.version }} -R wojiushixiaobai/1Panel-installer | grep 1panel-.*-offline-linux-loong64.tar.gz >/dev/null 2>&1 || echo "build=1" >> $GITHUB_OUTPUT
+          gh release view ${{ steps.get-version.outputs.version }} -R hubhike/1Panel-installer | grep 1panel-.*-offline-linux-loong64.tar.gz >/dev/null 2>&1 || echo "build=1" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -54,7 +54,7 @@ jobs:
       - name: Create Release
         if: steps.check-release.outputs.create == 1
         run: |
-          gh release create ${{ steps.get-version.outputs.version }} --notes "Release ${{ steps.get-version.outputs.version }}" -R wojiushixiaobai/1Panel-installer
+          gh release create ${{ steps.get-version.outputs.version }} --notes "Release ${{ steps.get-version.outputs.version }}" -R hubhike/1Panel-installer
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -67,7 +67,7 @@ jobs:
       - name: Upgrade Release
         if: steps.check-build.outputs.build == 1
         run: |
-          gh release upload ${{ steps.get-version.outputs.version }} build/${{ steps.get-version.outputs.version }}/*.tar.gz -R wojiushixiaobai/1Panel-installer --clobber
-          gh release upload ${{ steps.get-version.outputs.version }} build/${{ steps.get-version.outputs.version }}/checksums.txt -R wojiushixiaobai/1Panel-installer --clobber
+          gh release upload ${{ steps.get-version.outputs.version }} build/${{ steps.get-version.outputs.version }}/*.tar.gz -R hubhike/1Panel-installer --clobber
+          gh release upload ${{ steps.get-version.outputs.version }} build/${{ steps.get-version.outputs.version }}/checksums.txt -R hubhike/1Panel-installer --clobber
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -19,8 +19,8 @@ jobs:
         run: |
           version=$(curl -s 'https://api.github.com/repos/hubhike/1Panel-loongarch64/releases/latest' | jq -r ".tag_name")
           echo "version=${version}" >> $GITHUB_OUTPUT
-          docker_version=$(curl -s 'https://api.github.com/repos/hubhike/docker-ce-binaries-loongarch64/releases/latest' | jq -r ".tag_name")
-          compose_version=$(curl -s 'https://api.github.com/repos/hubhike/compose-loongarch64/releases/latest' | jq -r ".tag_name")
+          docker_version=$(curl -s 'https://api.github.com/repos/wojiushixiaobai/docker-ce-binaries-loongarch64/releases/latest' | jq -r ".tag_name")
+          compose_version=$(curl -s 'https://api.github.com/repos/wojiushixiaobai/compose-loongarch64/releases/latest' | jq -r ".tag_name")
           echo "app_version=${version}" >> $GITHUB_OUTPUT
           echo "docker_version=${docker_version/v/}" >> $GITHUB_OUTPUT
           echo "compose_version=${compose_version}" >> $GITHUB_OUTPUT

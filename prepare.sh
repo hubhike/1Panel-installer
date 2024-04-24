@@ -67,7 +67,7 @@ for architecture in x86_64 aarch64 s390x ppc64le loongarch64; do
     fi
 
    #APP_BIN_URL="https://github.com/wanghe-fit2cloud/1Panel/releases/download/${APP_VERSION}/1panel-${APP_VERSION}-linux-${arch}.tar.gz"
-    APP_BIN_URL="https://resource.fit2cloud.com/1panel/package/stable/${APP_VERSION}/1panel-${APP_VERSION}-linux-${arch}.tar.gz"
+    APP_BIN_URL="https://resource.fit2cloud.com/1panel/package/stable/${APP_VERSION}/release/1panel-${APP_VERSION}-linux-${arch}.tar.gz"
     DOCKER_BIN_URL="https://download.docker.com/linux/static/stable/${architecture}/docker-${DOCKER_VERSION}.tgz"
     COMPOSE_BIN_URL="https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-linux-${architecture}"
     if [ "${architecture}" == "loongarch64" ]; then
